@@ -131,6 +131,17 @@ router.get(`/rejected`, async (req, res) => {
   }
   //console.log(res.cookies);
 });
+router.get("/complaints", async (req, res) => {
+  try {
+    const info = await complaintData.find({ email: req.query.email });
+    // console.log(info);
+    res.json(info);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+  //console.log(res.cookies);
+});
 
 router.get("/solved", async (req, res) => {
   console.log("hii");
